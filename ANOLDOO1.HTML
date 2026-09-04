@@ -1,0 +1,256 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CHAMPIONS WRAPS - premium vehicle wrapping and custom automotive styling in Kenya.">
+  <title>CHAMPIONS WRAPS - Vehicle Wrap Studio</title>
+
+  <!-- Fonts: remove these links if you want the page to work fully offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==================== EDITABLE DESIGN SETTINGS ==================== */
+    :root {
+      --ink: #111111;
+      --dark: #090909;
+      --paper: #efede8;
+      --muted: #746f66;
+      --line: #d8d3ca;
+      --gold: #e2b35c;
+      --white: #ffffff;
+      --display-font: "Space Grotesk", sans-serif;
+      --body-font: Inter, Arial, sans-serif;
+    }
+
+    /* ==================== BASE STYLES ==================== */
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body-font); line-height: 1.5; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button, input, select, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    /* ==================== SHARED COMPONENTS ==================== */
+    .header { position: sticky; top: 0; z-index: 10; min-height: 78px; padding: 0 5vw; display: flex; align-items: center; gap: 28px; background: var(--dark); color: var(--white); }
+    .logo { display: flex; align-items: center; gap: 10px; margin-right: auto; }
+    .logo-mark { position: relative; width: 42px; height: 42px; overflow: hidden; border: 1px solid var(--gold); border-radius: 50%; display: grid; place-items: center; background: var(--dark); color: var(--gold); font: 700 11px var(--display-font); }
+    .logo-mark img { width: 100%; height: 100%; object-fit: cover; opacity: .6; }
+    .logo-mark strong { position: absolute; text-shadow: 0 1px 4px #000; }
+    .logo-copy b, .logo-copy small { display: block; }
+    .logo-copy b { font-size: 14px; letter-spacing: .18em; }
+    .logo-copy small { margin-top: 2px; color: #777; font-size: 8px; letter-spacing: .22em; }
+    .nav { display: flex; gap: 25px; color: #aaa; font-size: 12px; }
+    .nav a:hover, .nav a:focus-visible { color: var(--white); }
+    .header-btn, .btn { border: 1px solid #414141; border-radius: 999px; }
+    .header-btn { padding: 11px 15px; font-size: 11px; }
+    .header-btn span, .btn span { color: var(--gold); }
+    .menu-btn { display: none; padding: 8px; border: 0; background: transparent; color: var(--white); font-size: 25px; cursor: pointer; }
+    .eyebrow { color: var(--gold); font-size: 9px; font-weight: 800; letter-spacing: .24em; }
+    .eyebrow span { display: inline-block; width: 28px; height: 1px; margin-right: 10px; vertical-align: middle; background: currentColor; }
+    .eyebrow.dark { color: #8d754e; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: var(--display-font); }
+    h1 em, h2 em { color: var(--gold); font-style: normal; }
+    h2 { margin-bottom: 0; font-size: clamp(34px, 5vw, 68px); line-height: .98; letter-spacing: -.05em; }
+    .btn { display: inline-flex; align-items: center; justify-content: space-between; gap: 22px; padding: 14px 18px; font-size: 11px; font-weight: 700; transition: transform .2s ease, background .2s ease; }
+    .btn:hover, .btn:focus-visible { transform: translateY(-2px); }
+    .btn.primary { border-color: var(--gold); background: var(--gold); color: var(--ink); }
+    .btn.primary span { color: var(--ink); }
+    .btn.ghost { border-color: #444; color: var(--white); }
+    .section { padding: 110px 8vw; }
+    .heading-row, .showcase-top { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 60px; }
+    .heading-row > p, .showcase-top > p { max-width: 280px; margin-bottom: 4px; color: var(--muted); font-size: 13px; }
+
+    /* ==================== HERO ==================== */
+    .hero { min-height: calc(100vh - 78px); display: grid; grid-template-columns: 46% 54%; overflow: hidden; background: var(--dark); color: var(--white); }
+    .hero-copy { padding: 9vw 6vw 7vw 8vw; display: flex; flex-direction: column; justify-content: center; }
+    .hero h1 { max-width: 700px; margin: 28px 0; font-size: clamp(54px, 7vw, 100px); line-height: .89; letter-spacing: -.06em; }
+    .lead { max-width: 430px; color: #aaa; font-size: 15px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 30px 0 52px; }
+    .hero-proof { display: flex; gap: 28px; color: #777; font-size: 10px; }
+    .hero-proof div { display: grid; gap: 4px; }
+    .hero-proof strong { color: var(--gold); font: 700 12px var(--display-font); }
+    .hero-visual { position: relative; min-height: 580px; overflow: hidden; }
+    .hero-visual img { width: 100%; height: 100%; object-fit: cover; }
+    .visual-frame { position: absolute; z-index: 1; inset: 8%; border: 1px solid rgba(255,255,255,.35); pointer-events: none; }
+    .visual-tag { position: absolute; z-index: 2; right: 8%; bottom: 10%; padding: 18px; background: rgba(9,9,9,.86); }
+    .visual-tag small, .visual-tag b, .visual-tag span { display: block; }
+    .visual-tag small, .visual-tag span { color: #aaa; font-size: 9px; }
+    .visual-tag b { margin: 4px 0; font: 700 18px var(--display-font); }
+    .visual-stamp { position: absolute; z-index: 2; top: 12%; right: 10%; color: var(--gold); font: 700 13px var(--display-font); letter-spacing: .15em; text-align: center; transform: rotate(12deg); }
+    .visual-stamp i { font-size: 25px; }
+
+    /* ==================== CONTENT SECTIONS ==================== */
+    .marquee { overflow: hidden; padding: 18px 0; background: var(--gold); white-space: nowrap; font: 700 12px var(--display-font); letter-spacing: .16em; }
+    .marquee div { animation: scroll-text 24s linear infinite; }
+    .marquee span { margin: 0 24px; }
+    @keyframes scroll-text { to { transform: translateX(-25%); } }
+    .service-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
+    .service-grid article { min-height: 310px; padding: 24px; border-right: 1px solid var(--line); }
+    .service-grid article:first-child { border-left: 1px solid var(--line); }
+    .num { color: #a69c8c; font: 700 11px var(--display-font); }
+    .icon { margin: 40px 0 18px; color: var(--gold); font-size: 30px; }
+    .service-grid h3 { margin-bottom: 10px; font-size: 20px; }
+    .service-grid p { min-height: 78px; color: var(--muted); font-size: 12px; }
+    .service-grid a { font-size: 11px; font-weight: 700; }
+    .service-grid a b { color: #a27c38; }
+    .showcase { padding: 100px 8vw; background: #dedbd3; }
+    .gallery { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 14px; }
+    .gallery-card, .idea-card { position: relative; min-height: 440px; overflow: hidden; }
+    .gallery-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .gallery-card:hover img { transform: scale(1.04); }
+    .card-overlay { position: absolute; right: 0; bottom: 0; left: 0; padding: 25px; color: var(--white); background: linear-gradient(transparent, rgba(0,0,0,.85)); }
+    .card-overlay span, .idea-card > span { font-size: 9px; letter-spacing: .2em; }
+    .card-overlay h3 { margin: 7px 0 0; font-size: 24px; }
+    .idea-card { padding: 30px; background: var(--dark); color: var(--white); }
+    .idea-card h3 { margin: 55px 0 16px; font-size: 34px; line-height: .95; }
+    .idea-card p { max-width: 210px; color: #999; font-size: 12px; }
+    .round { position: absolute; right: 28px; bottom: 28px; width: 48px; height: 48px; border: 1px solid var(--gold); border-radius: 50%; display: grid; place-items: center; color: var(--gold); }
+    .steps { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--line); }
+    .steps > div { padding: 22px 18px 0 0; border-right: 1px solid var(--line); }
+    .steps > div:not(:first-child) { padding-left: 18px; }
+    .steps span, .why-grid b { color: #a27c38; font: 700 12px var(--display-font); }
+    .steps h3 { margin: 38px 0 8px; font-size: 20px; }
+    .steps p, .why-grid p { color: var(--muted); font-size: 12px; }
+    .dark { padding: 110px 8vw; background: var(--dark); color: var(--white); }
+    .dark h2 { max-width: 650px; margin: 28px 0 70px; }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 45px; }
+    .why-grid h3 { margin: 32px 0 8px; font-size: 20px; }
+    .why-grid p { color: #999; }
+    .quote { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; padding: 110px 8vw; }
+    .quote h2 { margin: 28px 0; }
+    .quote-copy > p { max-width: 320px; color: var(--muted); font-size: 13px; }
+    .contact { display: grid; gap: 5px; margin-top: 48px; font-size: 11px; }
+    .contact span { color: var(--muted); letter-spacing: .15em; }
+    .contact b { color: #a27c38; }
+    #quote-form { display: grid; gap: 16px; }
+    #quote-form label { display: grid; gap: 7px; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    #quote-form input, #quote-form select, #quote-form textarea { width: 100%; padding: 13px; border: 1px solid var(--line); border-radius: 0; outline: 0; background: transparent; color: var(--ink); font-size: 13px; text-transform: none; }
+    #quote-form textarea { resize: vertical; }
+    #quote-form input:focus, #quote-form select:focus, #quote-form textarea:focus { border-color: var(--gold); }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .full { width: 100%; border: 1px solid var(--gold); cursor: pointer; }
+    .form-note { color: var(--muted); font-size: 10px; }
+    footer { padding: 35px 8vw; display: flex; align-items: center; gap: 30px; background: #dedbd3; font-size: 11px; }
+    footer p { margin: 0 auto 0 0; color: var(--muted); }
+    footer > a { color: #8d754e; }
+    .toast { position: fixed; right: 20px; bottom: 20px; z-index: 20; padding: 14px 18px; background: var(--dark); color: var(--white); font-size: 12px; opacity: 0; pointer-events: none; transform: translateY(15px); transition: .25s ease; }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    /* ==================== MOBILE LAYOUT ==================== */
+    @media (max-width: 800px) {
+      .header { min-height: 68px; padding: 0 5vw; }
+      .menu-btn { display: block; }
+      .header-btn { display: none; }
+      .nav { position: absolute; top: 68px; right: 0; left: 0; display: none; padding: 20px 5vw; flex-direction: column; gap: 18px; background: var(--dark); }
+      .nav.open { display: flex; }
+      .hero { display: block; }
+      .hero-copy { min-height: 620px; padding: 80px 8vw 60px; }
+      .hero-visual { min-height: 420px; }
+      .heading-row, .showcase-top { display: block; margin-bottom: 38px; }
+      .heading-row > p, .showcase-top > p { margin-top: 22px; }
+      .section, .showcase, .dark, .quote { padding: 75px 8vw; }
+      .service-grid, .gallery, .steps, .quote { grid-template-columns: 1fr; }
+      .service-grid article, .service-grid article:first-child { min-height: auto; border: 0; border-bottom: 1px solid var(--line); }
+      .service-grid p { min-height: auto; }
+      .gallery-card, .idea-card { min-height: 360px; }
+      .steps > div, .steps > div:not(:first-child) { min-height: 180px; padding: 20px 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .steps h3 { margin-top: 25px; }
+      .why-grid { grid-template-columns: 1fr; gap: 25px; }
+      .dark h2 { margin-bottom: 50px; }
+      .quote { gap: 50px; }
+      footer { align-items: flex-start; flex-wrap: wrap; padding: 30px 8vw; }
+      footer p { width: 100%; order: 3; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ==================== HEADER ==================== -->
+  <header class="header">
+    <a href="#top" class="logo" aria-label="Champions Wraps home"><span class="logo-mark"><img src="image4.jpg.jpg" alt=""><strong>CW</strong></span><span class="logo-copy"><b>CHAMPIONS WRAPS</b><small>WRAP STUDIO - KE</small></span></a>
+    <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="main-navigation">&#9776;</button>
+    <nav id="main-navigation" class="nav" aria-label="Main navigation">
+      <a href="#services">Services</a><a href="#showcase">Showcase</a><a href="#process">Process</a><a href="#about">Why Champions Wraps</a><a href="#quote">Get a Quote</a>
+    </nav>
+    <a class="header-btn" href="#quote">Wrap My Car <span>&#8599;</span></a>
+  </header>
+
+  <main id="top">
+    <!-- ==================== HERO ==================== -->
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span></span> VEHICLE WRAP &amp; CUSTOMIZATION - KENYA</div>
+        <h1>Turn heads.<br><em>Wrap different.</em></h1>
+        <p class="lead">Premium car wrapping for people who refuse stock. Colour changes, custom graphics, commercial branding and statement finishes - executed with precision.</p>
+        <div class="hero-actions"><a class="btn primary" href="#quote">Build Your Wrap <span>&#8594;</span></a><a class="btn ghost" href="#showcase">See Our Work</a></div>
+        <div class="hero-proof"><div><strong>01</strong><span>Premium films</span></div><div><strong>02</strong><span>Clean finish</span></div><div><strong>03</strong><span>Detail obsessed</span></div></div>
+      </div>
+      <div class="hero-visual"><img src="image1.jpg.jpg" alt="Audi RS3 prepared as a premium wrap showcase"><div class="visual-frame"></div><div class="visual-tag"><small>FEATURED FINISH</small><b>gloss black wrap</b><span>Full exterior transformation</span></div><div class="visual-stamp">CHAMPIONS<br><i>KE</i></div></div>
+    </section>
+
+    <div class="marquee"><div>FULL WRAPS <span>&#10022;</span> COLOUR CHANGE <span>&#10022;</span> COMMERCIAL BRANDING <span>&#10022;</span> CUSTOM GRAPHICS <span>&#10022;</span> DETAILING <span>&#10022;</span> PPF STYLE <span>&#10022;</span></div></div>
+
+    <!-- ==================== SERVICES ==================== -->
+    <section id="services" class="section"><div class="heading-row"><div><div class="eyebrow dark"><span></span> WHAT WE DO</div><h2>More than a new colour.<br><em>A whole new identity.</em></h2></div><p>We transform everyday vehicles into rolling statements - from subtle OEM+ finishes to fully custom builds.</p></div><div class="service-grid"><article><span class="num">01</span><div class="icon">&#9680;</div><h3>Full Car Wraps</h3><p>Complete exterior transformations using premium automotive vinyl and meticulous panel finishing.</p><a href="#quote">Explore <b>&#8599;</b></a></article><article><span class="num">02</span><div class="icon">&#9672;</div><h3>Colour Change</h3><p>Gloss, satin, matte, metallic and special-effect finishes - choose a look that feels like yours.</p><a href="#quote">Choose a finish <b>&#8599;</b></a></article><article><span class="num">03</span><div class="icon">&#10022;</div><h3>Custom Graphics</h3><p>Stripes, patterns, motifs and statement graphics designed to make your vehicle impossible to ignore.</p><a href="#quote">Create a concept <b>&#8599;</b></a></article><article><span class="num">04</span><div class="icon">&#9635;</div><h3>Business &amp; Fleet</h3><p>Turn company cars, vans and fleets into mobile advertising with sharp, consistent branding.</p><a href="#quote">Brand your fleet <b>&#8599;</b></a></article></div></section>
+
+    <!-- ==================== SHOWCASE ==================== -->
+    <section id="showcase" class="showcase"><div class="showcase-top"><div><div class="eyebrow dark"><span></span> THE CHAMPIONS WRAPS</div><h2>Designed to be <em>seen.</em></h2></div><p>Three bold references. Your build can go anywhere from understated to outrageous.</p></div><div class="gallery"><article class="gallery-card"><img src="image2.jpg - Copy.jpg" alt="Black Toyota Crown custom wrap showcase"><div class="card-overlay"><span>TOYOTA CROWN / FULL WRAP</span><h3>Luxury, but louder.</h3></div></article><article class="gallery-card"><img src="image3.jpg - Copy.jpg" alt="Purple Toyota Mark X custom wrap showcase"><div class="card-overlay"><span>TOYOTA MARK X / COLOUR CHANGE</span><h3>Colour with presence.</h3></div></article><article class="gallery-card"><img src="image4.jpg.jpg" alt="Teal Toyota Mark X custom wrap showcase"><div class="card-overlay"><span>TOYOTA MARK X / CUSTOM FINISH</span><h3>Built to stand apart.</h3></div></article></div></section>
+
+    <!-- ==================== PROCESS AND ABOUT ==================== -->
+    <section id="process" class="section"><div class="heading-row"><div><div class="eyebrow dark"><span></span> HOW IT WORKS</div><h2>From stock to <em>stunning.</em></h2></div><p>A simple process designed around your car, your taste and the finish you want.</p></div><div class="steps"><div><span>01</span><h3>Consult</h3><p>Choose the finish, style, coverage and overall direction.</p></div><div><span>02</span><h3>Design</h3><p>We turn the idea into a clean visual plan before installation.</p></div><div><span>03</span><h3>Prep</h3><p>Thorough surface preparation is where the final finish begins.</p></div><div><span>04</span><h3>Wrap</h3><p>Careful application, edge work and quality-control checks.</p></div><div><span>05</span><h3>Reveal</h3><p>Collect your transformed car and leave looking twice.</p></div></div></section>
+    <section id="about" class="dark"><div class="eyebrow"><span></span> WHY CHAMPIONS WRAPS</div><h2>We obsess over the <em>finish.</em></h2><div class="why-grid"><div><b>01</b><h3>Precision</h3><p>We treat edges, recesses and panel transitions as part of the design - not an afterthought.</p></div><div><b>02</b><h3>Premium look</h3><p>Our visual approach is clean, modern and built to make the car feel intentionally designed.</p></div><div><b>03</b><h3>Personal service</h3><p>You deal with a wrap studio that listens before it installs.</p></div></div></section>
+
+    <!-- ==================== QUOTE FORM ==================== -->
+    <section id="quote" class="quote"><div class="quote-copy"><div class="eyebrow dark"><span></span> START YOUR BUILD</div><h2>Tell us how you want<br>your car to <em>look.</em></h2><p>Send your details and our team can continue the conversation on WhatsApp.</p><div class="contact"><span>WHATSAPP</span><b><a href="https://wa.me/254704270724">0704 270 724 &#8599;</a></b><b><a href="https://wa.me/254700293753">0700 293 753 &#8599;</a></b></div></div><form id="quote-form"><label>Name<input name="name" placeholder="Your name" required></label><label>Phone / WhatsApp<input name="phone" placeholder="+254..." required></label><label>Vehicle<input name="vehicle" placeholder="e.g. Toyota Crown" required></label><div class="two"><label>Wrap type<select name="service" required><option value="">Choose</option><option>Full car wrap</option><option>Colour change</option><option>Custom graphics</option><option>Business / fleet branding</option><option>Not sure - advise me</option></select></label><label>Finish<select name="finish"><option>Gloss</option><option>Matte</option><option>Satin</option><option>Metallic</option><option>Special effect</option></select></label></div><label>Tell us about your idea<textarea name="message" rows="4" placeholder="Colour, style, references, deadline..."></textarea></label><button class="btn primary full" type="submit">Request My Quote <span>&#8594;</span></button><small class="form-note">No payment required. This sends your request to WhatsApp.</small></form></section>
+  </main>
+
+  <footer><div class="logo"><span class="logo-mark"><img src="image4.jpg.jpg" alt=""><strong>CW</strong></span><span class="logo-copy"><b>CHAMPIONS WRAPS</b><small>WRAP STUDIO - KE</small></span></div><p>&copy; <span id="year"></span> CHAMPIONS WRAPS. Vehicle wraps &amp; custom automotive styling.</p><a href="#top">Back to top &#8593;</a></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite">Opening WhatsApp...</div>
+
+  <script>
+    const whatsappNumber = "254704270724";
+    const menuButton = document.querySelector(".menu-btn");
+    const navigation = document.querySelector(".nav");
+    const closeMenu = () => {
+      navigation.classList.remove("open");
+      menuButton.setAttribute("aria-expanded", "false");
+      menuButton.setAttribute("aria-label", "Open menu");
+    };
+    menuButton.addEventListener("click", () => {
+      const isOpen = navigation.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    });
+    navigation.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+    document.addEventListener("click", (event) => {
+      if (!navigation.contains(event.target) && !menuButton.contains(event.target)) closeMenu();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeMenu();
+    });
+    document.querySelector("#year").textContent = new Date().getFullYear();
+    const quoteForm = document.querySelector("#quote-form");
+    const toast = document.querySelector("#toast");
+    quoteForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const formData = new FormData(quoteForm);
+      const message = [
+        "Hello Champions Wraps, I would like a wrap quote.",
+        `Name: ${formData.get("name")}`,
+        `Phone: ${formData.get("phone")}`,
+        `Vehicle: ${formData.get("vehicle")}`,
+        `Wrap type: ${formData.get("service")}`,
+        `Finish: ${formData.get("finish")}`,
+        `Idea: ${formData.get("message") || "Not provided"}`
+      ].join("\n");
+      toast.classList.add("show");
+      window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
+      window.setTimeout(() => toast.classList.remove("show"), 3500);
+    });
+  </script>
+</body>
+</html>
